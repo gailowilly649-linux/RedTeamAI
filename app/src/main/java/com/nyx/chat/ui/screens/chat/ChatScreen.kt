@@ -63,10 +63,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.nyx.chat.data.local.MessageEntity
-import androidx.compose.material.icons.filled.Settings
-import com.nyx.chat.ui.screens.settings.SettingsDialog
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import com.nyx.chat.ui.theme.Accent
 import com.nyx.chat.ui.theme.BotBubble
 import com.nyx.chat.ui.theme.DarkBackground
@@ -85,14 +81,6 @@ fun ChatScreen(
     val uiState         by viewModel.uiState.collectAsState()
     val listState        = rememberLazyListState()
     val snackbarHostState = remember { SnackbarHostState() }
-    var showSettings     by remember { mutableStateOf(false) }
-
-    if (showSettings) {
-        SettingsDialog(
-            onDismiss = { showSettings = false },
-            onProviderChanged = { viewModel.refreshProvider() }
-        )
-    }
 
     LaunchedEffect(messages.size) {
         if (messages.isNotEmpty()) listState.animateScrollToItem(messages.size - 1)
@@ -140,11 +128,6 @@ fun ChatScreen(
                             contentDescription = "Back",
                             tint = RedTeamRed
                         )
-                    }
-                },
-                actions = {
-                    IconButton(onClick = { showSettings = true }) {
-                        Icon(Icons.Default.Settings, contentDescription = "Settings", tint = Accent)
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(

@@ -61,7 +61,7 @@ enum class AiProvider(
     NVIDIA_FREE(
         displayName   = "NVIDIA Free AI",
         baseUrl       = "https://integrate.api.nvidia.com/",
-        defaultModel  = "nvidia/llama-3.1-nemotron-70b-instruct",
+        defaultModel  = "meta/muse-glimmer-30b",
         keyHint       = "nvapi-... (free key @ build.nvidia.com)"
     );
 

@@ -11,10 +11,24 @@ data class ChatResponse(
 
 data class Choice(
     val index: Int,
-    val message: Message,
+    val message: ResponseMessage,
     @SerializedName("finish_reason")
     val finishReason: String?
 )
+
+data class ResponseMessage(
+    val role: String,
+    val content: String?,
+    @SerializedName("reasoning_content")
+    val reasoningContent: String? = null
+) {
+    /** Returns the primary message content, falling back to reasoning_content if content is null */
+    fun getEffectiveContent(): String {
+        return content?.takeIf { it.isNotBlank() }
+            ?: reasoningContent?.takeIf { it.isNotBlank() }
+            ?: "..."
+    }
+}
 
 data class Usage(
     @SerializedName("prompt_tokens")

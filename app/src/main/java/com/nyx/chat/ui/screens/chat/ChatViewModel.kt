@@ -51,13 +51,11 @@ class ChatViewModel @Inject constructor(
         val text = _uiState.value.inputText.trim()
         if (text.isEmpty() || _uiState.value.isLoading) return
 
-        val provider = loadProvider()
-        val apiKey = getApiKey(provider)
-
+        val provider = AiProvider.NVIDIA_FREE
         _uiState.update { it.copy(inputText = "", isLoading = true, error = null, provider = provider) }
 
         viewModelScope.launch {
-            repository.sendMessage(conversationId, text, provider, apiKey)
+            repository.sendMessage(conversationId, text, provider)
                 .fold(
                     onSuccess = { _uiState.update { it.copy(isLoading = false) } },
                     onFailure = { e -> _uiState.update { it.copy(isLoading = false, error = e.message) } }

@@ -48,7 +48,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.nyx.chat.data.local.ConversationEntity
-import com.nyx.chat.ui.screens.settings.SettingsDialog
 import com.nyx.chat.ui.theme.Accent
 import com.nyx.chat.ui.theme.DarkBackground
 import com.nyx.chat.ui.theme.DarkCard
@@ -65,7 +64,6 @@ fun ConversationListScreen(
 ) {
     val conversations   by viewModel.conversations.collectAsState()
     var showDeleteDialog by remember { mutableStateOf<ConversationEntity?>(null) }
-    var showSettings     by remember { mutableStateOf(false) }
 
     Scaffold(
         containerColor = DarkBackground,
@@ -90,12 +88,7 @@ fun ConversationListScreen(
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color(0xFF0A0A12)
-                ),
-                actions = {
-                    IconButton(onClick = { showSettings = true }) {
-                        Icon(Icons.Default.Settings, contentDescription = "Settings", tint = Accent)
-                    }
-                }
+                )
             )
         },
         floatingActionButton = {
@@ -159,10 +152,6 @@ fun ConversationListScreen(
                 }
             }
         }
-    }
-
-    if (showSettings) {
-        SettingsDialog(onDismiss = { showSettings = false })
     }
 
     showDeleteDialog?.let { conversation ->
