@@ -9,8 +9,12 @@ import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.slideInVertically
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import com.nyx.chat.R
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -145,12 +149,23 @@ fun ChatScreen(
             }
         }
     ) { padding ->
-        Column(
+        Box(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
-                .background(DarkBackground)
         ) {
+            Image(
+                painter = painterResource(id = R.drawable.bg_tactical_grid),
+                contentDescription = "Tactical Background",
+                modifier = Modifier.fillMaxSize(),
+                contentScale = ContentScale.Crop
+            )
+
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(DarkBackground.copy(alpha = 0.85f))
+            ) {
             // ── Message list ─────────────────────────────────────────────
             LazyColumn(
                 state    = listState,
@@ -199,6 +214,7 @@ fun ChatScreen(
             )
         }
     }
+}
 }
 
 // ── Welcome banner (shown on empty chat) ──────────────────────────────────────

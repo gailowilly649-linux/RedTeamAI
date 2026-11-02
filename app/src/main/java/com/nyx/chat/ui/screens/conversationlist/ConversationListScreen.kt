@@ -1,7 +1,11 @@
 package com.nyx.chat.ui.screens.conversationlist
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import com.nyx.chat.R
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -102,53 +106,69 @@ fun ConversationListScreen(
             }
         }
     ) { padding ->
-        if (conversations.isEmpty()) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding)
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.bg_tactical_grid),
+                contentDescription = "Tactical Background",
+                modifier = Modifier.fillMaxSize(),
+                contentScale = ContentScale.Crop
+            )
+
             Box(
-                modifier         = Modifier
-                    .fillMaxSize()
-                    .padding(padding),
-                contentAlignment = Alignment.Center
-            ) {
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Text("🔴", fontSize = 64.sp)
-                    Spacer(modifier = Modifier.height(16.dp))
-                    Text(
-                        text       = "NO MISSIONS YET",
-                        color      = RedTeamRed,
-                        fontWeight = FontWeight.ExtraBold,
-                        fontFamily = FontFamily.Monospace,
-                        fontSize   = 18.sp
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Text(
-                        text       = "Tap + to launch a new operation",
-                        color      = Color.Gray,
-                        fontFamily = FontFamily.Monospace,
-                        fontSize   = 12.sp
-                    )
-                    Spacer(modifier = Modifier.height(4.dp))
-                    Text(
-                        text       = "🔴 All systems operational — ready to execute",
-                        color      = Accent.copy(alpha = 0.7f),
-                        fontFamily = FontFamily.Monospace,
-                        fontSize   = 11.sp
-                    )
-                }
-            }
-        } else {
-            LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(padding)
-                    .padding(horizontal = 12.dp, vertical = 8.dp)
+                    .background(DarkBackground.copy(alpha = 0.85f))
             ) {
-                items(conversations, key = { it.id }) { conversation ->
-                    ConversationItem(
-                        conversation = conversation,
-                        onClick      = { onChatClick(conversation.id) },
-                        onDelete     = { showDeleteDialog = conversation }
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
+                if (conversations.isEmpty()) {
+                    Box(
+                        modifier         = Modifier.fillMaxSize(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                            Text("🔴", fontSize = 64.sp)
+                            Spacer(modifier = Modifier.height(16.dp))
+                            Text(
+                                text       = "NO MISSIONS YET",
+                                color      = RedTeamRed,
+                                fontWeight = FontWeight.ExtraBold,
+                                fontFamily = FontFamily.Monospace,
+                                fontSize   = 18.sp
+                            )
+                            Spacer(modifier = Modifier.height(8.dp))
+                            Text(
+                                text       = "Tap + to launch a new operation",
+                                color      = Color.Gray,
+                                fontFamily = FontFamily.Monospace,
+                                fontSize   = 12.sp
+                            )
+                            Spacer(modifier = Modifier.height(4.dp))
+                            Text(
+                                text       = "🔴 All systems operational — ready to execute",
+                                color      = Accent.copy(alpha = 0.7f),
+                                fontFamily = FontFamily.Monospace,
+                                fontSize   = 11.sp
+                            )
+                        }
+                    }
+                } else {
+                    LazyColumn(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(horizontal = 12.dp, vertical = 8.dp)
+                    ) {
+                        items(conversations, key = { it.id }) { conversation ->
+                            ConversationItem(
+                                conversation = conversation,
+                                onClick      = { onChatClick(conversation.id) },
+                                onDelete     = { showDeleteDialog = conversation }
+                            )
+                            Spacer(modifier = Modifier.height(8.dp))
+                        }
+                    }
                 }
             }
         }

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Cyber red team tactical grid background -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="1080dp"
+    android:height="1920dp"
+    android:viewportWidth="1080"
+    android:viewportHeight="1920">
+
+    <!-- Deep dark matrix background -->
+    <path
+        android:fillColor="#07070D"
+        android:pathData="M0,0h1080v1920h-1080z" />
+
+    <!-- Top tactical glowing gradient overlay -->
+    <path
+        android:fillColor="#15FF2D2D"
+        android:pathData="M0,0 L1080,0 L1080,480 L0,120 Z" />
+
+    <!-- Subtle circuit & grid lines -->
+    <path
+        android:strokeColor="#18FF2D2D"
+        android:strokeWidth="1.5"
+        android:pathData="M0,160 L1080,160 M0,320 L1080,320 M0,480 L1080,480 M0,640 L1080,640 M0,800 L1080,800 M0,960 L1080,960 M0,1120 L1080,1120 M0,1280 L1080,1280 M0,1440 L1080,1440 M0,1600 L1080,1600 M0,1760 L1080,1760" />
+
+    <path
+        android:strokeColor="#18FF2D2D"
+        android:strokeWidth="1.5"
+        android:pathData="M120,0 L120,1920 M240,0 L240,1920 M360,0 L360,1920 M480,0 L480,1920 M600,0 L600,1920 M720,0 L720,1920 M840,0 L840,1920 M960,0 L960,1920" />
+
+    <!-- Angular cyber accent nodes -->
+    <path
+        android:fillColor="#3300FF9C"
+        android:pathData="M600,640 L620,640 L620,660 L600,660 Z M360,1120 L380,1120 L380,1140 L360,1140 Z M840,320 L860,320 L860,340 L840,340 Z M120,1440 L140,1440 L140,1460 L120,1460 Z" />
+
+    <!-- Center faint watermark skull & shield -->
+    <path
+        android:fillColor="#0DFF2D2D"
+        android:pathData="M540,700 L380,780 L380,960 C380,1100 540,1220 540,1220 C540,1220 700,1100 700,960 L700,780 Z" />
+
+    <path
+        android:fillColor="#07070D"
+        android:pathData="M540,880 C500,880 470,910 470,950 C470,978 485,1000 510,1015 L510,1080 L570,1080 L570,1015 C595,1000 610,978 610,950 C610,910 580,880 540,880z" />
+</vector>
