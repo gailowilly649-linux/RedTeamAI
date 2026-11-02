@@ -1,0 +1,39 @@
+# Gradle files
+.gradle/
+build/
+app/build/
+
+# Android Studio / IntelliJ files
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Local configuration
+local.properties
+.env
+.env.*
+!.env.example
+
+# Log files
+*.log
+
+# Built APKs & Bundles
+*.apk
+*.aab
+app/build/outputs/apk/
+app/build/outputs/bundle/
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+# Node / Sub-apps
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+gemini-chat-app/node_modules/
+gemini-chat-app/server/node_modules/
+gemini-chat-app/client/node_modules/
+gemini-chat-app/client/dist/

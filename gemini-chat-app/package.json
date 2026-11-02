@@ -1,0 +1,15 @@
+{
+  "name": "gemini-chat-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Full-stack Gemini AI Chat Application using Express, React, and @google/genai",
+  "scripts": {
+    "install:all": "npm install && npm install --prefix server && npm install --prefix client",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
